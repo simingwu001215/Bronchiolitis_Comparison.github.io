@@ -1,0 +1,74 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/simingwu001215/Bronchiolitis.github.io/main/xray_pt_bro.csv"
+  },
+  "height": 300,
+  "width": 600,
+  "title": {
+    "text": "Clinician Comparison Metrics For Chest X-ray",
+    "fontSize": 18,
+    "subtitle": " Select a hospital and search for a clinician.",
+    "subtitleFontStyle": "italic",
+    "subtitleFontSize": 10,
+    "anchor": "middle"
+  },
+  "params": [
+    {
+      "name": "selectedClinician",
+      "bind": {"name": "Search for Clinician", "input": "text"}
+    },
+    {
+      "name": "selectedHospital",
+      "bind": {
+        "name": "Select Hospital",
+        "input": "select",
+        "options": ["All", "Casey", "MMC- Clayton", "Dandenong"],
+        "value": "All"
+      }
+    }
+  ],
+  "transform": [
+    {
+      "calculate": "toString(datum['Treating.Clinician'])",
+      "as": "clinician_id_string"
+    },
+    {"fold": ["percentage", "hospital_each_average", "hospital_all_average"]},
+    {
+      "filter": "(datum.clinician_id_string === selectedClinician || selectedClinician === '') && (datum.Hospital === selectedHospital || selectedHospital === 'All')"
+    }
+  ],
+  "mark": "bar",
+  "encoding": {
+    "x": {
+      "field": "key",
+      "type": "nominal",
+      "axis": {"title": "Metrics", "labelAngle": 0}
+    },
+    "y": {
+      "field": "value",
+      "type": "quantitative",
+      "axis": {"title": "Chest X-ray Percentage(%)"}
+    },
+    "color": {
+      "field": "key",
+      "type": "nominal",
+      "legend": {"title": "Metrics"}
+    },
+    "tooltip": [
+      {
+        "field": "clinician_id_string",
+        "type": "nominal",
+        "title": "Clinician ID"
+      },
+      {"field": "Hospital", "type": "nominal"},
+      {"field": "key", "type": "nominal"},
+      {
+        "field": "value",
+        "type": "quantitative",
+        "title": "Chest X-ray Percentage(%)"
+      }
+    ]
+  },
+  "config": {}
+}

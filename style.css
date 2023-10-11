@@ -1,0 +1,72 @@
+body *{
+    font-family: 'Open Sans', sans-serif;
+}
+
+h1 {
+    font-weight: 900;
+}
+
+body {
+    background-color: white;
+    margin-left:10%;
+    margin-right:10%;
+    text-align: center;
+}
+
+
+
+.vis-container {
+    margin: 300 auto;
+    width: 100%;
+    text-align: center;
+}
+
+
+.description h2,
+h1 {
+    margin-top: 0px;
+}
+
+.description-right {
+    padding-left: 10px;
+}
+
+.description-left {
+    padding-right: 10px;
+}
+
+.pure-g {
+    margin-bottom: 40px;
+}
+
+.small-font {
+    font-size: 14px;
+}
+
+.center {
+    text-align: center;
+    
+  }
+
+.img-container img {
+  width: auto; /* Set the width to 200 pixels */
+  height: 300px; /* Auto-adjust the height to maintain aspect ratio */
+}
+.container {
+    max-width: 100%;
+    padding: 20px;
+    margin: 0 auto;
+}
+
+p {
+    text-align: justify;
+}
+
+.color-bar {
+            background-color: darkblue; /* Dark blue background */
+            padding: 10px; /* Padding around the text */
+            text-align: center; /* Centering the text */
+            font-family: 'Arial', sans-serif; /* Setting the font type to Arial */
+            font-size: 24px; /* Setting the font size to 24 pixels */
+            color: white; /* Setting the text color to white */
+        }

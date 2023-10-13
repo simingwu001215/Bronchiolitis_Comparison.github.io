@@ -96,3 +96,23 @@ h1 {
     font-size: 24px; /* Setting the font size to 24 pixels */
     color: white; /* Setting the text color to white */
 }
+
+.visualizations-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; /* Three equal columns */
+    grid-template-rows: 1fr 1fr; /* Two equal rows */
+    gap: 20px; /* Space between visualizations */
+    width: 100%; /* Full width of the parent container */
+    justify-items: center; /* Center the content of each grid cell horizontally */
+    align-items: center; /* Center the content of each grid cell vertically */
+}
+
+/* Adjust the size of the images within the visualizations */
+.visualizations-container img {
+    width: auto;
+    max-width: 100%; /* Ensure the image doesn't overflow its container */
+    height: auto;
+    max-height: 300px; /* Adjust this value based on your preference */
+}
+
+

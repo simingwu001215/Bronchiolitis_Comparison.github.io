@@ -22,9 +22,10 @@ function getSpecForOrder(order) {
     field: "value", 
     type: "quantitative", 
     title: {
-        signal: "datum.order === 'Adrenaline' ? 'Percentage of Adrenaline (%)' : datum.order === 'Blood Test' ? 'Percentage of Blood Test (%)' : 'Percentage(%)'"
+        signal: "datum.order === 'Adrenaline' ? 'Percentage of Adrenaline (%)' : datum.order === 'Blood Test' ? 'Percentage of Blood Test (%)' : datum.order === 'Corticosteroids' ? 'Percentage of Corticosteroids (%)' : datum.order === 'Salbutamol' ? 'Percentage of Salbutamol (%)' : datum.order === 'Chest X-ray' ? 'Percentage of Chest X-ray (%)' : datum.order === 'Antibiotics' ? 'Percentage of Antibiotics (%)' : 'Percentage(%)'"
     }
 },
+
 
             color: { 
                 field: "metric", 

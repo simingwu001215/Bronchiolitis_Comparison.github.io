@@ -3,8 +3,8 @@ function getSpecForOrder(order) {
     return {
         $schema: "https://vega.github.io/schema/vega-lite/v5.json",
         title: order,
-        width: 600,  // Adjusted width
-        height: 300,  // Increased height
+        width: 400,  // Adjusted width
+        height: 250,  // Increased height
         data: { url: "data.csv", format: { type: "csv" } },
         transform: [
             { filter: { field: "order", oneOf: [order] } },

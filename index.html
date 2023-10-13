@@ -1,35 +1,17 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-  <title>Multiple Visualisations | An Example</title>
-  <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
-  <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
-
-  <!-- Import pure.css -->
-  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
-    integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- Google font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
-
-  <!-- CSS file -->
-  <link rel="stylesheet" type="text/css" href="style.css" media="all">
-
-  <style type="text/css">
-      div{
-        margin: auto;
-      }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vega-Lite Hospital and Clinician Filter with Dropdowns</title>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
+<body>
 
-<body >   
-  <div >
+    <div >
         <img class="img-container" src="images.png" alt="Description of Image">
     </div>
   <div class="color-bar">
@@ -40,304 +22,28 @@
     <div class="vis-container" >
       <div class="vis-container">
         <h2 style="font-size: 36px; color:#1c9099 ;">The Comparison in Treatment for Bronchiolitis Among Clinicians and Hospitals</h2>
-          
-    
-  
-        </div>
-      </div>
-      <div class="pure-g">
-        <div class="pure-u-1-2">
-          <div class="center">
-              <div id="vis1" class="vis-container"></div>
-          </div>
-        </div>
-
-        <div class="pure-u-1-2">
-          <div class="center">
-              <div id="vis2" class="vis-container"></div>
-          </div>
-        </div>
-      </div>
-
-      
-
-      <div class="vis-container" >
-        <div class="vis-container">
-        
-          <div class="container">
-
-            <div id="vis11" class="vis-container"></div>
-            
-        <div class="pure-g">
-          <div class="pure-u-1-2">
-            <div class="center">
-                <div id="vis3" class="vis-container"></div>
-            </div>
-          </div>
-  
-          <div class="pure-u-1-2">
-            <div class="center">
-                <div id="vis4" class="vis-container"></div>
-            </div>
-          </div>
-        </div>
-
-        
-  
-
-        <div class="container">
-           <div id="vis12" class="vis-container"></div>
-          
-          
-        </ul>
-          <div class="pure-g">
-            <div class="pure-u-1-2">
-              <div class="center">
-                  <div id="vis5" class="vis-container"></div>
-              </div>
-            </div>
-    
-            <div class="pure-u-1-2">
-              <div class="center">
-                  <div id="vis6" class="vis-container"></div>
-              </div>
-            </div>
-          </div>
-
-          
-       <div class="container">
-          <div id="vis13" class="vis-container"></div>
-       
-       </div>
-
-          
-<!-- For vis7 and vis8 -->
-<div class="pure-g">
-    <div class="pure-u-1-2">
-        <div class="center">
-            <div id="vis7" class="vis-container"></div>
-        </div>
-    </div>
-
-    <div class="pure-u-1-2">
-        <div class="center">
-            <div id="vis8" class="vis-container"></div>
-        </div>
     </div>
 </div>
+<div class="main-container">
 
-<!-- For vis14 -->
-<div class="vis-container">
-    <div class="container">
-        <div id="vis14" class="vis-container"></div>
-    </div>
-</div>
-             
-
-                
-              
-          
-          </div>
-          
-       
-
-            
-              <div class="pure-g">
-                <div class="pure-u-1-2">
-                  <div class="center">
-                      <div id="vis9" class="vis-container"></div>
-                    
-                  </div>
-                </div>
-        
-                <div class="pure-u-1-2">
-                  <div class="center">
-                      <div id="vis10" class="vis-container"></div>
-                  </div>
-                </div>
-               
-              </div>
-
-             
-      <div class="container">
-
-          <div id="vis15" class="vis-container"></div>
-        
-    </div>
-           
-
-            <div class="pure-g">
-    <div class="pure-u-1-2">
-        <div class="center">
-            <div id="vis16" class="vis-container"></div>
-        </div>
+    <div class="controls">
+        <select id="hospitalDropdown">
+            <option value="">All Hospitals</option>
+        </select>
+        <select id="clinicianDropdown">
+            <option value="">All Clinicians</option>
+        </select>
     </div>
 
-    <div class="pure-u-1-2">
-        <div class="center">
-            <div id="vis17" class="vis-container"></div>
-        </div>
-    </div>
+    <div class="visualization-container" id="visualizationAdrenaline"></div>
+    <div class="visualization-container" id="visualizationBloodTest"></div>
+    <div class="visualization-container" id="visualizationCorticosteroids"></div>
+    <div class="visualization-container" id="visualizationSalbutamol"></div>
+    <div class="visualization-container" id="visualizationChestXray"></div>
+    <div class="visualization-container" id="visualizationAntibiotics"></div>
+
 </div>
 
-<!-- For vis14 -->
-<div class="vis-container">
-    <div class="container">
-        <div id="vis18" class="vis-container"></div>
-    </div>
-</div>
-
-    
-
-             
-
-        
-      
-  
-
-
-
-
-
-  
-
-      
-  <script type="text/javascript">
-    var specVis1 = "./ab_com.json";
-    var specVis2 = "./ad_com.json";
-    var specVis3 = "./cort_com.json";
-    var specVis4 = "./sal_com.json";
-    var specVis5 = "./bt_com.json";
-    var specVis6 = "./xray_com.json";
-    var specVis7 = "./cort_scatter.json";
-    var specVis8 = "./cort_scatter_search.json";
-    var specVis9 = "./sal_scatter.json";
-    var specVis10 = "./sal_scatter_search.json";
-    var specVis11 = "./antibiotics_stack.json";
-    var specVis12 = "./adrenaline_stack.json";
-    var specVis13 = "./bloodtest_stack.json";
-    var specVis14 = "./cort_stack.json";
-    var specVis15 = "./salbutamol_stack.json";  
-    var specVis16 = "./xray_scatter.json";
-    var specVis17 = "./xray_scatter_search.json";
-    var specVis18 ="./xray_stack.json";
-    var specVis19 = "./barchart_ch.json";
-    var specVis20 = "./barchart_ibuprofen.json";
-    var specVis21 = "./barchart_ondansetron.json";
-    var specVis22 = "./barchart_paracetamol.json";
-    var specVis23 = "./barchart_prednisolone.json";
-    var specVis24 = "./barchart_salbutamol.json";
-    var specVis25 = "./barchart_prednisolonedexamethasone.json";
-    var specVis26 = "./barchart_salbutamolipratropium.json";
-    var specVis27 = "./barchart_XR Chest X-ray.json";
-
-    vegaEmbed('#vis1', specVis1, { "actions": false }).then(function (result) {
-      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-    }).catch(console.error);
-
-    vegaEmbed('#vis2', specVis2, { "actions": false }).then(function (result) {
-      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-    }).catch(console.error);
-
-    vegaEmbed('#vis3', specVis3, { "actions": false }).then(function (result) {
-      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-    }).catch(console.error);
-
-    vegaEmbed('#vis4', specVis4, { "actions": false }).then(function (result) {
-      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-    }).catch(console.error);
-
-    vegaEmbed('#vis5', specVis5, { "actions": false }).then(function (result) {
-      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-    }).catch(console.error);
-    vegaEmbed('#vis6', specVis6, { "actions": false }).then(function (result) {
-      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-    }).catch(console.error);
-
-    vegaEmbed('#vis7', specVis7, { "actions": false }).then(function (result) {
-      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-    }).catch(console.error);
-
-    vegaEmbed('#vis8', specVis8, { "actions": false }).then(function (result) {
-      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-    }).catch(console.error);
-
-    vegaEmbed('#vis9', specVis9, { "actions": false }).then(function (result) {
-      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-    }).catch(console.error);
-
-    vegaEmbed('#vis10', specVis10, { "actions": false }).then(function (result) {
-      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-    }).catch(console.error);
-
-    vegaEmbed('#vis11', specVis11, { "actions": false }).then(function (result) {
-      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-    }).catch(console.error);
-
-    vegaEmbed('#vis12', specVis12, { "actions": false }).then(function (result) {
-      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-    }).catch(console.error);
-
-    vegaEmbed('#vis13', specVis13, { "actions": false }).then(function (result) {
-      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-    }).catch(console.error);
-
-    vegaEmbed('#vis14', specVis14, { "actions": false }).then(function (result) {
-      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-    }).catch(console.error);
-
-    vegaEmbed('#vis15', specVis15, { "actions": false }).then(function (result) {
-      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-    }).catch(console.error);
-
-    vegaEmbed('#vis16', specVis16, { "actions": false }).then(function (result) {
-      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-    }).catch(console.error);
-
-    vegaEmbed('#vis17', specVis17, { "actions": false }).then(function (result) {
-      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-    }).catch(console.error);
-    vegaEmbed('#vis18', specVis18, { "actions": false }).then(function (result) {
-      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-    }).catch(console.error);
-
-    vegaEmbed('#vis19', specVis19, { "actions": false }).then(function (result) {
-      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-    }).catch(console.error);
-
-    vegaEmbed('#vis20', specVis20, { "actions": false }).then(function (result) {
-      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-    }).catch(console.error);
-
-    vegaEmbed('#vis21', specVis21, { "actions": false }).then(function (result) {
-      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-    }).catch(console.error);
-
-    vegaEmbed('#vis22', specVis22, { "actions": false }).then(function (result) {
-      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-    }).catch(console.error);
-
-    vegaEmbed('#vis23', specVis23, { "actions": false }).then(function (result) {
-      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-    }).catch(console.error);
-
-    vegaEmbed('#vis24', specVis24, { "actions": false }).then(function (result) {
-      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-    }).catch(console.error);
-
-    vegaEmbed('#vis25', specVis25, { "actions": false }).then(function (result) {
-      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-    }).catch(console.error);
-
-    vegaEmbed('#vis26', specVis26, { "actions": false }).then(function (result) {
-      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-    }).catch(console.error);
-
-    vegaEmbed('#vis27', specVis27, { "actions": false }).then(function (result) {
-      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-    }).catch(console.error);
-
-  </script>
+<script src="script.js"></script>
 </body>
-
 </html>

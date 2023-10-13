@@ -18,7 +18,14 @@ function getSpecForOrder(order) {
                 type: "ordinal",
                 axis: { labelAngle: 0 }
             },
-            y: { field: "value", type: "quantitative", title: "Percentage(%)" },
+            y: { 
+    field: "value", 
+    type: "quantitative", 
+    title: {
+        signal: "datum.order === 'Adrenaline' ? 'Percentage of Adrenaline (%)' : datum.order === 'Blood Test' ? 'Percentage of Blood Test (%)' : 'Percentage(%)'"
+    }
+},
+
             color: { 
                 field: "metric", 
                 type: "nominal",

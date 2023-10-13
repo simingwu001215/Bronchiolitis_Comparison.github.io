@@ -1,4 +1,3 @@
-// Function to generate Vega-Lite specification for a given order
 function getSpecForOrder(order) {
     return {
         $schema: "https://vega.github.io/schema/vega-lite/v5.json",
@@ -19,11 +18,14 @@ function getSpecForOrder(order) {
                 type: "ordinal",
                 axis: { labelAngle: 0 }
             },
-            y: { field: "value", type: "quantitative" ,title:"Percentage(%)"},
+            y: { field: "value", type: "quantitative", title: "Percentage(%)" },
             color: { 
-                field: "Hospital", 
+                field: "metric", 
                 type: "nominal",
-                scale: { domain: ["Casey", "MMC- Clayton", "Dandenong"], range: ["#e6550d", "#756bb1", "#2c7fb8"] } // Using tableau10 color brewer
+                scale: { 
+                    domain: ["percentage", "hospital_each_average", "hospital_all_average"], 
+                    range: ["#e6550d", "#756bb1", "#2c7fb8"] 
+                }
             },
             tooltip: [
                 { field: "Clinician_String", type: "nominal", title: "Clinician" },
@@ -35,13 +37,7 @@ function getSpecForOrder(order) {
     };
 }
 
-// ... [rest of the code remains unchanged]
 
-
-// ... [rest of the code remains unchanged]
-
-
-// ... [rest of the code remains unchanged]
 
 
 // Function to update visualizations based on hospital and clinician selection

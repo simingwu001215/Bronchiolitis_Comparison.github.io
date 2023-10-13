@@ -97,14 +97,24 @@ h1 {
     color: white; /* Setting the text color to white */
 }
 
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
 .visualizations-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr; /* Three equal columns */
     grid-template-rows: 1fr 1fr; /* Two equal rows */
     gap: 20px; /* Space between visualizations */
-    width: 100%; /* Full width of the parent container */
+    width: 100vw; /* Full viewport width */
+    max-width: 100%; /* Ensure it doesn't exceed the viewport width */
     justify-items: center; /* Center the content of each grid cell horizontally */
     align-items: center; /* Center the content of each grid cell vertically */
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+    padding: 20px; /* Add some padding around the container */
 }
 
 /* Adjust the size of the images within the visualizations */
@@ -114,5 +124,4 @@ h1 {
     height: auto;
     max-height: 300px; /* Adjust this value based on your preference */
 }
-
 

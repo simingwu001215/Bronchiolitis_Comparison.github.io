@@ -1,4 +1,17 @@
+// Define a mapping of orders to Y-axis titles
+const orderTitles = {
+    "Adrenaline": "Percentage of Adrenaline Over Patients",
+    "Blood Test": "Percentage of Blood Test Over Patients",
+    "Corticosteroids": "Percentage of Corticosteroids Over Patients",
+    "Salbutamol": "Percentage of Salbutamol Over Patients",
+    "Chest X-ray": "Percentage of Chest X-ray Over Patients",
+    "Antibiotics": "Percentage of Antibiotics Over Patients"
+};
+
 function getSpecForOrder(order) {
+    // Set the Y-axis title based on the selected order, or use a default title
+    const yAxisTitle = orderTitles[order] || "Percentage Over Patients";
+
     return {
         $schema: "https://vega.github.io/schema/vega-lite/v5.json",
         title: order,
@@ -19,14 +32,10 @@ function getSpecForOrder(order) {
                 axis: { labelAngle: 0 }
             },
             y: { 
-    field: "value", 
-    type: "quantitative", 
-    title: {
-        signal: "datum.order === 'Adrenaline' ? 'Percentage of Adrenaline (%)' : datum.order === 'Blood Test' ? 'Percentage of Blood Test (%)' : datum.order === 'Corticosteroids' ? 'Percentage of Corticosteroids (%)' : datum.order === 'Salbutamol' ? 'Percentage of Salbutamol (%)' : datum.order === 'Chest X-ray' ? 'Percentage of Chest X-ray (%)' : datum.order === 'Antibiotics' ? 'Percentage of Antibiotics (%)' : 'Percentage(%)'"
-    }
-},
-
-
+                field: "value", 
+                type: "quantitative", 
+                title: yAxisTitle // Set Y-axis title based on order
+            },
             color: { 
                 field: "metric", 
                 type: "nominal",
@@ -44,9 +53,6 @@ function getSpecForOrder(order) {
         }
     };
 }
-
-
-
 
 // Function to update visualizations based on hospital and clinician selection
 function updateVisualizations() {

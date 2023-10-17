@@ -1,11 +1,11 @@
 // Define a mapping of orders to Y-axis titles
 const orderTitles = {
-    "Adrenaline": "Percentage of Adrenaline Over Patients",
-    "Blood Test": "Percentage of Blood Test Over Patients",
-    "Corticosteroids": "Percentage of Corticosteroids Over Patients",
-    "Salbutamol": "Percentage of Salbutamol Over Patients",
-    "Chest X-ray": "Percentage of Chest X-ray Over Patients",
-    "Antibiotics": "Percentage of Antibiotics Over Patients"
+    "Adrenaline": "Percentage of Adrenaline Over Patients(%)",
+    "Blood Test": "Percentage of Blood Test Over Patients(%)",
+    "Corticosteroids": "Percentage of Corticosteroids Over Patients(%)",
+    "Salbutamol": "Percentage of Salbutamol Over Patients(%)",
+    "Chest X-ray": "Percentage of Chest X-ray Over Patients(%)",
+    "Antibiotics": "Percentage of Antibiotics Over Patients(%)"
 };
 
 function getSpecForOrder(order) {
